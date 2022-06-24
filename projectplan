@@ -1,0 +1,29 @@
+Requirements: see projectideas
+
+Tools that you will use (consider a few options): do a lot of google searches
+* Pycharm
+* python
+* API (limited to 100 requests a day) other limitations? library requests
+* something to send a notification (python library/AWS/other)
+* run by itself (aws)
+
+Feasibility: Are we gonna go for it? Yes
+
+Implementation: how are we gonna do it?
+* use the API to collect the data
+* use code to handle the data
+
+
+keep a python list of emails
+
+lambda
+cron event
+SES (simple email service)
+
+Other people to use this!
+they don't know python
+* input()
+* website where users can subscribe to emails
+* symbol, emails
+* store all of the users and their emails
+they don't know AWS
