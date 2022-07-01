@@ -16,7 +16,7 @@ print(listlenght)
 x = "35.4"
 y = float(x)
 
-1/0
+#filter data
 
 
 
