@@ -1,0 +1,13 @@
+realted to stocks
+
+price to earning ratio
+less than 15
+
+
+https://www.yahoofinanceapi.com/
+
+1. getting data from the website: this can be done, requires API
+2. sending you a notification: lots of python libraries emails or messenger message
+3. program needs to be continuously running: run by itself
+
+* monthly average - today's average
