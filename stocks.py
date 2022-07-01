@@ -12,6 +12,11 @@
 # * function to create the sql
 # * function which
 
+# what is simplest thing we can do first?
+# chris's email
+# recipient email: school email
+# create a function
+# send an empty email
 
 import http.client
 import json
@@ -89,6 +94,34 @@ def generate_email_text(stock_data):
     print(price)
 
 
+import smtplib
+from email.mime.text import MIMEText
+
+def send_email(x):
+    email_template = MIMEText("Hello")
+    print(type(email_template))
+
+    me = "tom80f@outlook.com"
+    you = "w1826354@my.westminster.ac.uk"
+    password = ""
+
+    email_template["From"] = me
+    email_template["To"] = you
+    email_template["Subject"] = "hello there" + str(x * 1000)
+    print("SENDING EMAIL")
+
+    s = smtplib.SMTP('outlook.office365.com')
+    s.ehlo()
+    s.starttls()
+    s.login(me, password)
+    s.sendmail(me, [you], email_template.as_string())
+    s.quit()
+
+for x in range(100):
+    test1 = send_email(x)
+
+
+"""
 print("start debugger")
 
 inputted_symbol = input("type ticker symbol here")
@@ -103,7 +136,7 @@ stocks_dictionary = API(stocks_SQl)
 #print(stocks_dictionary)
 
 stock_info = generate_email_text(stocks_dictionary)
-
+"""
 
 
 f"""
