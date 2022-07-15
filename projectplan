@@ -27,3 +27,24 @@ they don't know python
 * symbol, emails
 * store all of the users and their emails
 they don't know AWS
+
+
+# expecting
+# AUTHORIZATION: account
+# WHERE: link to the site
+# WHAT: details of which stocks and what info we want
+# python: other python stuff which needs to be done
+
+# use functions
+# setup git
+# use aws
+
+# functions?
+# * function to create the sql
+# * function which
+
+# what is simplest thing we can do first?
+# chris's email
+# recipient email: school email
+# create a function
+# send an empty email
