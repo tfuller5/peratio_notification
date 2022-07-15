@@ -24,7 +24,8 @@ from email.mime.text import MIMEText
 import http.client
 import json
 
-
+def function(x):
+    return x ** 2
 def API(sql):
     """
     This function connects to the sql database and retrieves the stocks data.
@@ -68,9 +69,7 @@ def create_sql(symbol):
     sql_string = """
     SELECT name, price, pe_ratio
     FROM stocks
-    WHERE symbol = '""" + symbol + """'
-    ORDER BY price DESC
-    """
+    WHERE symbol = '""" + symbol + """'"""
 
     return sql_string
 
@@ -91,23 +90,30 @@ def generate_email_text(stock_data):
     price = (float(price))
 
     name = firststock["name"]
+    # have a look at the variables ! :)
+    email_content = f"""
+    Hello investor, 
+    You have selected the {results} stock and you set an alert for when it will reach x pe ratio. 
+    The actual price of  stock is {price}, pe ratio is {peratio}.
+    """
 
-    print(peratio)
-    print(name)
-    print(price)
+    return email_content
 
 
-def send_email(x):
-    email_template = MIMEText("Hello")
-    print(type(email_template))
 
-    me = "tom80f@outlook.com"
+
+def send_email(email_content_text):
+    email_template = MIMEText(email_content_text)
+
+    me = "Stock77System55@outlook.com"
     you = "w1826354@my.westminster.ac.uk"
-    password = ""
+    password = "Python!!"
 
     email_template["From"] = me
     email_template["To"] = you
-    email_template["Subject"] = "hello there" + str(x * 1000)
+    email_template["Subject"] = "hello there"
+
+
     print("SENDING EMAIL")
 
     s = smtplib.SMTP('outlook.office365.com')
@@ -118,10 +124,9 @@ def send_email(x):
     s.quit()
 
 
+# frontend developer: websites, html, css, javascript
+# backend developer: backend! python is backend!
+
+# full stack: you do both
 
 
-f"""
-Hello investor, 
-You have selected the x stock and you set an alert for when it will reach x pe ratio. 
-The actual price of {5} stocs is y, pe ratio is h.
-"""
