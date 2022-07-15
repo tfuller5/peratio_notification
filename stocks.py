@@ -18,6 +18,9 @@
 # create a function
 # send an empty email
 
+import smtplib
+from email.mime.text import MIMEText
+
 import http.client
 import json
 
@@ -94,9 +97,6 @@ def generate_email_text(stock_data):
     print(price)
 
 
-import smtplib
-from email.mime.text import MIMEText
-
 def send_email(x):
     email_template = MIMEText("Hello")
     print(type(email_template))
@@ -117,26 +117,7 @@ def send_email(x):
     s.sendmail(me, [you], email_template.as_string())
     s.quit()
 
-for x in range(100):
-    test1 = send_email(x)
 
-
-"""
-print("start debugger")
-
-inputted_symbol = input("type ticker symbol here")
-
-print("before call")
-# they get SQL first
-stocks_SQl = create_sql(inputted_symbol)
-#print(stocks_SQl)
-
-# ok, they are using an API to get stocks
-stocks_dictionary = API(stocks_SQl)
-#print(stocks_dictionary)
-
-stock_info = generate_email_text(stocks_dictionary)
-"""
 
 
 f"""
