@@ -1,23 +1,3 @@
-# expecting
-# AUTHORIZATION: account
-# WHERE: link to the site
-# WHAT: details of which stocks and what info we want
-# python: other python stuff which needs to be done
-
-# use functions
-# setup git
-# use aws
-
-# functions?
-# * function to create the sql
-# * function which
-
-# what is simplest thing we can do first?
-# chris's email
-# recipient email: school email
-# create a function
-# send an empty email
-
 import smtplib
 from email.mime.text import MIMEText
 
@@ -28,8 +8,6 @@ import json
 def API(sql):
     """
     This function connects to the sql database and retrieves the stocks data.
-
-
     :param sql:
     :return: a data dictionary
     """
@@ -68,9 +46,7 @@ def create_sql(symbol):
     sql_string = """
     SELECT name, price, pe_ratio
     FROM stocks
-    WHERE symbol = '""" + symbol + """'
-    ORDER BY price DESC
-    """
+    WHERE symbol = '""" + symbol + """'"""
 
     return sql_string
 
@@ -89,25 +65,28 @@ def generate_email_text(stock_data):
     peratio = firststock["pe_ratio"]
     price = firststock["price"]
     price = (float(price))
-
     name = firststock["name"]
 
-    print(peratio)
-    print(name)
-    print(price)
+    # have a look at the variables ! :)
+    email_content = f"""
+    Hello investor, 
+    You have selected the {results} stock and you set an alert for when it will reach x pe ratio. 
+    The actual price of  stock is {price}, pe ratio is {peratio}.
+    """
+    return email_content
 
 
-def send_email(x):
-    email_template = MIMEText("Hello")
-    print(type(email_template))
+def send_email(email_content_text):
+    email_template = MIMEText(email_content_text)
 
-    me = "tom80f@outlook.com"
+    me = "Stock77System55@outlook.com"
     you = "w1826354@my.westminster.ac.uk"
-    password = ""
+    password = "Python!!"
 
     email_template["From"] = me
     email_template["To"] = you
-    email_template["Subject"] = "hello there" + str(x * 1000)
+    email_template["Subject"] = "hello there"
+
     print("SENDING EMAIL")
 
     s = smtplib.SMTP('outlook.office365.com')
@@ -116,12 +95,3 @@ def send_email(x):
     s.login(me, password)
     s.sendmail(me, [you], email_template.as_string())
     s.quit()
-
-
-
-
-f"""
-Hello investor, 
-You have selected the x stock and you set an alert for when it will reach x pe ratio. 
-The actual price of {5} stocs is y, pe ratio is h.
-"""

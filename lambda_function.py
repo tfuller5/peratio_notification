@@ -4,6 +4,12 @@ import stocks
 import random
 random.randint(1, 100)
 
+
+
+#= stocks.function(5)
+
+#print(y)
+
 def lambda_handler(event, context):
     """
     Everything begins here!
@@ -12,13 +18,13 @@ def lambda_handler(event, context):
 
     # they get SQL first
     stocks_SQl = stocks.create_sql(inputted_symbol)
-    # print(stocks_SQl)
 
     # ok, they are using an API to get stocks
     stocks_dictionary = stocks.API(stocks_SQl)
-    # print(stocks_dictionary)
 
-    stock_info = stocks.generate_email_text(stocks_dictionary)
+    email_text = stocks.generate_email_text(stocks_dictionary)
+
+    stocks.send_email(email_text)
 
     return {
         'statusCode': 200,
@@ -26,3 +32,4 @@ def lambda_handler(event, context):
     }
 
 lambda_handler(None, None)
+
