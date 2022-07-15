@@ -22,13 +22,9 @@ def lambda_handler(event, context):
     # ok, they are using an API to get stocks
     stocks_dictionary = stocks.API(stocks_SQl)
 
-    print("stop here")
-
     email_text = stocks.generate_email_text(stocks_dictionary)
 
     stocks.send_email(email_text)
-
-
 
     return {
         'statusCode': 200,
