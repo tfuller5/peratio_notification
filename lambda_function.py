@@ -1,14 +1,10 @@
 import json
 import stocks
 
-import random
-random.randint(1, 100)
+# program with 130 lines
+# something is going wrong
+# what do you do?
 
-
-
-#= stocks.function(5)
-
-#print(y)
 
 def lambda_handler(event, context):
     """
@@ -24,6 +20,7 @@ def lambda_handler(event, context):
 
     email_text = stocks.generate_email_text(stocks_dictionary)
 
+    #print(email_text)
     stocks.send_email(email_text)
 
     return {

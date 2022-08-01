@@ -69,9 +69,10 @@ def generate_email_text(stock_data):
 
     # have a look at the variables ! :)
     email_content = f"""
-    Hello investor, 
-    You have selected the {results} stock and you set an alert for when it will reach x pe ratio. 
-    The actual price of  stock is {price}, pe ratio is {peratio}.
+    Hello investor,\n
+    You have selected the {name} stock and you set an alert for when it will reach x pe ratio. 
+        * price of  stock is {price}
+        * pe ratio is {peratio}. 
     """
     return email_content
 
@@ -80,11 +81,11 @@ def send_email(email_content_text):
     email_template = MIMEText(email_content_text)
 
     me = "Stock77System55@outlook.com"
-    you = "w1826354@my.westminster.ac.uk"
+    you = ["w1826354@my.westminster.ac.uk", "tom80f@gmail.com"]
     password = "Python!!"
 
     email_template["From"] = me
-    email_template["To"] = you
+    email_template["To"] = ",".join(you)
     email_template["Subject"] = "hello there"
 
     print("SENDING EMAIL")
@@ -93,5 +94,5 @@ def send_email(email_content_text):
     s.ehlo()
     s.starttls()
     s.login(me, password)
-    s.sendmail(me, [you], email_template.as_string())
+    s.sendmail(me, you, email_template.as_string())
     s.quit()
